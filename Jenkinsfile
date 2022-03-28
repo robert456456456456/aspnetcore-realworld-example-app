@@ -24,8 +24,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "docker build . -t    456456/dotnet-core-test:$currentBuild.name"
-                sh "docker push 456456/dotnet-core-test:$currentBuild.name"
+                sh "docker build . -t    456456/dotnet-core-test:$currentJob"
+                sh "docker push 456456/dotnet-core-test:$currentJob"
             }
         }
 
