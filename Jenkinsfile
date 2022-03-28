@@ -35,7 +35,7 @@ pipeline {
                 sh "docker push 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
             }
         }
-       stage('Docker Push') {
+       stage('Docker deploy') {
             steps {
                 sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'docker ps' -u ubuntu"
             }
