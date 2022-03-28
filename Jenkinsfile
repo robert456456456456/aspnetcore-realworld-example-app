@@ -25,11 +25,20 @@ pipeline {
         stage('Build') {
             steps {
 
-                sh "docker build . -t    456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
                 sh "docker push 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
             }
         }
 
+      stage('Docker Push') {
+            steps {
 
+                sh "docker push 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
+            }
+        }
+       stage('Docker Push') {
+            steps {
+                sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'docker ps' -u ubuntu"
+            }
+        }
     }
 }
