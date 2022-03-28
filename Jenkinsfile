@@ -47,5 +47,13 @@ pipeline {
                 sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'docker run -d -p 8083:80 --name myapp 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}'  -u ubuntu"
             }
         }
+
+       stage('Uni test ') {
+            steps {
+
+                sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'wget localhost:8083 && echo '"'WE GOT IT'"' || echo '"'Failure'"' ' -u ubuntu"
+            }
+        }
     }
 }
+
