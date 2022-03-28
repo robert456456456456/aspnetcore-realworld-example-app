@@ -13,7 +13,6 @@ pipeline {
           steps{
             checkout scm
           }
-
         }
         stage ('Artifactory configuration') {
             steps {
