@@ -38,6 +38,8 @@ pipeline {
        stage('Docker deploy') {
             steps {
                 sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'docker pull 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}' -u ubuntu"
+
+                sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'docker run -d -p 8083:80 --name myapp dotnet-core-test' -u ubuntu"
             }
         }
     }
