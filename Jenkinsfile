@@ -6,7 +6,6 @@ pipeline {
          stage('Clean up Workspace'){
                   steps {
                      deleteDir()
-                     //sh "docker stop myapp;docker rm myapp;docker rmi src:latest"
                   }
 
          }
