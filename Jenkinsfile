@@ -24,9 +24,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                String JOB_NAME = build.project.name;
-                sh "docker build . -t    456456/dotnet-core-test:$JOB_NAME"
-                sh "docker push 456456/dotnet-core-test:$JOB_NAME"
+
+                sh "docker build . -t    456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
+                sh "docker push 456456/dotnet-core-test:${env.getEnvironment().get('JOB_NAME')}"
             }
         }
 
