@@ -51,7 +51,7 @@ pipeline {
        stage('Uni test ') {
             steps {
 
-                sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'wget localhost:8083 && echo '"'WE GOT IT'"' || echo '"'Failure'"' ' -u ubuntu"
+                sh "sudo ansible ${env.getEnvironment().get('JOB_NAME')} -a 'wget localhost:8083 && echo 'WE GOT IT' || echo 'Failure' ' -u ubuntu"
             }
         }
     }
