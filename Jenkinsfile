@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "docker build . -t   artifactory/example-repo-local:$currentBuild.number"
+                sh "docker build . -t   157.175.199.12:8081/example-repo-local:$currentBuild.number"
             }
         }
 
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     def rtDocker = Artifactory.docker server: artifactory
-                    def dockerBuildInfo1 = rtDocker.push("artifactory/example-repo-local:$currentBuild.number", "docker-repo")
+                    def dockerBuildInfo1 = rtDocker.push("157.175.199.12:8081/example-repo-local:$currentBuild.number", "docker-repo")
                 }
             }
         }
