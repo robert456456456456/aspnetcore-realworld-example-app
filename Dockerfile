@@ -1,5 +1,5 @@
 #build container
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env1
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 
 #install unzip for Cake
 RUN apt-get update
@@ -10,6 +10,7 @@ COPY . .
 RUN ./build.sh
 
 #runtime container
+# Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
 
 COPY --from=build /build/publish /app
